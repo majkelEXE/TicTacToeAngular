@@ -1,0 +1,27 @@
+<table>
+  <tr *ngFor="let row of boardState; let r = index">
+    <td *ngFor="let column of row; let c = index">
+      <ng-container [ngSwitch]="column">
+        <input
+          *ngSwitchCase="0"
+          type="checkbox"
+          (change)="handleMove.emit({r,c})"
+        />
+        <p class="box" *ngSwitchCase="1">O</p>
+        <p [class.box]="true" *ngSwitchCase="2">X</p>
+        <p
+          class="box"
+          *ngSwitchCase="3"
+          [style.background-color]="'lightgray'"
+          [innerHTML]="'O'"
+        ></p>
+        <p
+          [ngClass]="'box'"
+          *ngSwitchCase="4"
+          [ngStyle]="{ 'background-color': 'gray' }"
+          [innerText]="'X'"
+        ></p>
+      </ng-container>
+    </td>
+  </tr>
+</table>

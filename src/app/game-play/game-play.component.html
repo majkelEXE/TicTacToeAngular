@@ -1,0 +1,10 @@
+<h1 [ngStyle]="{ margin: 'auto', 'text-align': 'center' }">
+  X:{{ points.x }} O:{{ points.o }} <button (click)="reset()">New Game</button>
+</h1>
+<app-game-board
+  [n]="gameProps.n"
+  [m]="gameProps.m"
+  [boardState]="generateBoard()"
+  [points]="points"
+  (handleMove)="playerMoved($event)"
+></app-game-board>
